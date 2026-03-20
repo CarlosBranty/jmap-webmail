@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.3 (2026-03-20)
+
+### Fixes
+
+- **Security**: Update Next.js 16.1.6 -> 16.2.0 (CSRF bypass, HTTP request smuggling, image disk cache DoS, resume buffering DoS, dev HMR CSRF)
+- **Calendar**: Participant/invitation handling aligned with Stalwart JMAP, deduplicate self-attendees (#36)
+- **Calendar**: Double-click to create event from month view with smart time suggestion (#37)
+- **Calendar**: Week numbers column in month view, respects firstDayOfWeek setting (#38)
+- **Calendar**: Replace inline delete confirms with centered modal dialog (#34)
+- **Calendar**: Sticky week headers aligned with calendar grid (#33)
+- **Contacts**: Simplified bulk selection actions into compact dropdown menu (#39)
+- **Navigation**: Hide vertical nav rail on tablet to avoid duplicate navigation (#40)
+
 ## 1.3.2 (2026-03-17)
 
 ### Fixes
