@@ -263,18 +263,46 @@ This document tracks the development status and planned features for JMAP Webmai
 
 ## Planned Features
 
-### Advanced Features
+### Next release (1.5.0) — community PRs and targeted fixes
+- [ ] Archive action applies to whole thread, not single message (#49)
+- [ ] Domain-favicon avatars when contact photo unset (privacy-preserving, #22)
+- [ ] Nested folder names resolved correctly in Sieve filter generator (#62)
+- [ ] Attachments rendered for mail originating from third-party providers (#58)
+- [ ] Russian and Ukrainian locales
+- [ ] Contact list batched to respect server `maxObjectsInGet` (#45)
+- [ ] Favicon unread badge with live mailbox count refresh
+- [ ] Print layout excludes sidebar and message list
+- [ ] Docker major version tag (`jmap-webmail:1`)
+- [ ] OIDC HTTPS requirement documented
+
+### Real-time and PWA (1.6.0)
+- [ ] JMAP WebSocket push transport (RFC 8887), replacing polling fallback
+- [ ] PWA manifest, service worker, maskable icons, installable app
+- [ ] Browser badge API for installed-app unread count
+
+### Push notifications and mobile polish (1.7.0)
+- [ ] Web Push notifications with VAPID
+- [ ] Pull-to-refresh on mobile
+- [ ] Configurable swipe actions (archive, delete, mark read)
+- [ ] Haptic feedback on destructive actions and long-press
+- [ ] Web Share target (receive URLs/text from OS share sheet)
+
+### Rich-text composer (1.8.0)
+- [ ] WYSIWYG composer with multipart `text/plain` + `text/html` sending
+
+### Advanced features
 - [ ] Free/busy queries (Principal/getAvailability)
 - [ ] Calendar sharing UI (JMAP Sharing RFC 9670)
+- [ ] Shared calendars and address books for multi-account access (#28)
 - [ ] Email encryption (PGP/GPG)
 
-### Performance Optimizations
+### Performance optimizations
 - [ ] Email content caching
 - [ ] Bundle size optimization
 - [ ] Service worker for offline support
 - [ ] Lazy loading for attachments
 
-### Testing (Remaining)
+### Testing (remaining)
 - [ ] E2E tests with real JMAP server
 - [ ] Accessibility testing
 - [ ] Performance testing
@@ -283,10 +311,10 @@ This document tracks the development status and planned features for JMAP Webmai
 - [ ] Production build optimizations
 - [ ] Monitoring and logging
 
-### Security Enhancements
+### Security enhancements
 - [ ] Rate limiting
 
-## Known Issues
+## Known issues
 
 - [ ] Next.js workspace root warning (cosmetic)
 

@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.4.1 (2026-04-16)
+
+### Security
+
+- **XSS in plain-text email renderer**: Plain-text bodies escaped `<`, `>`, `&` but
+  not `"` or `'` before the URL linkifier built the anchor tag. A crafted URL
+  containing a double or single quote broke out of the `href` attribute and could
+  inject event handlers (e.g. `onmouseover`). Both the single-email viewer and the
+  threaded conversation view are affected. Fixed by a shared `plainTextToSafeHtml`
+  helper that escapes all five HTML-significant characters before linkification,
+  with regression tests. Reported privately by Linus Rath (@rathlinus) — thank you.
+- **Apache JAMES compose compatibility**: Email submission now includes an explicit
+  `type: "text/plain"` on the `textBody` part per RFC 8621 §4.1.4. Stalwart accepts
+  either form; JAMES 3.9 rejects the request without it (#48). Thanks @jbfreymann-sara
+  for the report.
+
+### Dependencies
+
+- Next.js 16.1.5 → 16.2.4 (DoS in Server Components, GHSA-q4gf-8mx6-v5v3)
+- next-intl 4.5.8 → 4.9.1 (open redirect, GHSA-8f24-v5vv-gm5j)
+- DOMPurify 3.3.1 → 3.4.0 (`FORBID_TAGS` bypass, GHSA-39q2-94rc-95cp)
+- Transitive fixes for vite, picomatch, brace-expansion
+
 ## 1.4.0 (2026-03-23)
 
 ### Features
