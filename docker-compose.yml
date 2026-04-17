@@ -2,7 +2,7 @@ services:
   webmail:
     image: ghcr.io/root-fr/jmap-webmail:latest
     ports:
-      - "3000:3000"
+      - "3002:3002"
     env_file:
       - .env
     healthcheck:
