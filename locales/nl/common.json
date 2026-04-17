@@ -40,7 +40,8 @@
       "missing_params": "Ontbrekende autorisatiegegevens. Probeer opnieuw in te loggen.",
       "token_exchange_failed": "Authenticatie kon niet worden voltooid. Probeer het opnieuw.",
       "access_denied": "Toegang geweigerd. Neem contact op met uw beheerder.",
-      "back_to_login": "Terug naar inloggen"
+      "back_to_login": "Terug naar inloggen",
+      "requires_https": "Single Sign-On vereist een beveiligde verbinding. Open deze webmail via HTTPS (of localhost tijdens de ontwikkeling)."
     }
   },
   "sidebar": {
@@ -515,6 +516,8 @@
     "german": "Deutsch",
     "dutch": "Nederlands",
     "portuguese": "Português",
+    "russian": "Русский",
+    "ukrainian": "Українська",
     "select_language": "Selecteer taal",
     "switch_to_english": "Overschakelen naar Engels",
     "switch_to_french": "Overschakelen naar Frans",
@@ -524,6 +527,8 @@
     "switch_to_german": "Overschakelen naar Duits",
     "switch_to_dutch": "Overschakelen naar Nederlands",
     "switch_to_portuguese": "Overschakelen naar Portugees",
+    "switch_to_russian": "Overschakelen naar Russisch",
+    "switch_to_ukrainian": "Overschakelen naar Oekraïens",
     "switching": "Taal wijzigen..."
   },
   "settings": {
@@ -663,6 +668,10 @@
         "close": "Sluiten",
         "invalid_email": "Voer een geldig e-mailadres in",
         "already_added": "Deze afzender wordt al vertrouwd"
+      },
+      "domain_favicon_avatars": {
+        "label": "Domein-avatars",
+        "description": "Als een contact geen foto heeft, wordt het favicon van het domein van de afzender getoond in plaats van initialen. Opgehaald van een openbare favicon-dienst op basis van alleen de domeinnaam (geen e-mailadres, geen hashing). Standaard uitgeschakeld."
       }
     },
     "composer": {

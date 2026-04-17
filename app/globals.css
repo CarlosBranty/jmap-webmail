@@ -428,3 +428,143 @@ body {
     -webkit-backdrop-filter: none !important;
   }
 }
+
+/* Print support. The user clicks Print on an email, which clones the
+   viewer into #print-overlay at the body level and flips html.is-printing
+   on. The live app is hidden, the overlay is positioned at top-left and
+   styled for paper: black text, transparent-over-white background,
+   no shadows, no animations. Keeping the overlay at the body root
+   avoids cross-browser :has()/flex/visibility quirks entirely.
+   Cleanup runs on the afterprint event. */
+html.is-printing body > *:not(#print-overlay) {
+  display: none !important;
+}
+
+#print-overlay {
+  position: absolute;
+  left: -10000px;
+  top: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@media print {
+  @page {
+    margin: 12mm;
+  }
+
+  html, body {
+    background: white !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  html.is-printing #print-overlay {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #print-overlay,
+  #print-overlay * {
+    color: #000 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-color: #ccc !important;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  #print-overlay #email-viewer-container {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  #print-overlay #email-content-area {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  #print-overlay iframe {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    width: 100% !important;
+    background: #fff !important;
+  }
+
+  /* Newsletter-style HTML emails are typically laid out with fixed-width
+     tables (width="600" or style="width:640px"). On A4 paper the usable
+     width is around 180mm, so the right edge of the content gets clipped.
+     Force every printed element to shrink to the page width, let tables
+     auto-layout, and encourage long URLs / words to break. */
+  #print-overlay *:not(html):not(body) {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #print-overlay img,
+  #print-overlay video,
+  #print-overlay canvas,
+  #print-overlay svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  #print-overlay table {
+    max-width: 100% !important;
+    width: auto !important;
+    table-layout: auto !important;
+  }
+  #print-overlay td,
+  #print-overlay th,
+  #print-overlay p,
+  #print-overlay li,
+  #print-overlay pre,
+  #print-overlay code {
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+  #print-overlay pre {
+    white-space: pre-wrap !important;
+  }
+  #print-overlay .print-inlined-iframe {
+    width: 100% !important;
+  }
+
+  #print-overlay a {
+    color: #0645ad !important;
+    text-decoration: underline !important;
+  }
+
+  #print-overlay .print\:hidden {
+    display: none !important;
+  }
+}

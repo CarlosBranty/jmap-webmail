@@ -40,7 +40,8 @@
       "missing_params": "Faltan datos de autorización. Intenta iniciar sesión de nuevo.",
       "token_exchange_failed": "No se pudo completar la autenticación. Inténtalo de nuevo.",
       "access_denied": "Acceso denegado. Contacta a tu administrador.",
-      "back_to_login": "Volver al inicio de sesión"
+      "back_to_login": "Volver al inicio de sesión",
+      "requires_https": "El inicio de sesión único requiere una conexión segura. Accede a este correo web por HTTPS (o localhost en desarrollo)."
     }
   },
   "sidebar": {
@@ -515,6 +516,8 @@
     "german": "Deutsch",
     "dutch": "Nederlands",
     "portuguese": "Português",
+    "russian": "Русский",
+    "ukrainian": "Українська",
     "select_language": "Seleccionar idioma",
     "switch_to_english": "Cambiar a inglés",
     "switch_to_french": "Cambiar a francés",
@@ -524,6 +527,8 @@
     "switch_to_german": "Cambiar a alemán",
     "switch_to_dutch": "Cambiar a neerlandés",
     "switch_to_portuguese": "Cambiar a portugués",
+    "switch_to_russian": "Cambiar a ruso",
+    "switch_to_ukrainian": "Cambiar a ucraniano",
     "switching": "Cambiando idioma..."
   },
   "settings": {
@@ -663,6 +668,10 @@
         "close": "Cerrar",
         "invalid_email": "Por favor ingrese una dirección de correo válida",
         "already_added": "Este remitente ya es de confianza"
+      },
+      "domain_favicon_avatars": {
+        "label": "Avatares por dominio",
+        "description": "Cuando un contacto no tiene foto, se muestra el favicon del dominio del remitente en lugar de las iniciales. Se obtiene de un servicio público de favicons usando únicamente el nombre de dominio (sin dirección de correo ni hash). Desactivado por defecto."
       }
     },
     "composer": {
@@ -1202,7 +1211,8 @@
       "name_required": "Se requiere al menos un nombre o apellido",
       "email_invalid": "Introduce una dirección de correo válida",
       "save_failed": "Error al guardar el contacto",
-      "email_error_inline": "Formato de correo inválido"
+      "email_error_inline": "Formato de correo inválido",
+      "delete": "Eliminar"
     },
     "groups": {
       "create": "Nuevo grupo",
@@ -1266,7 +1276,8 @@
     "empty_state_subtitle": "Crea tu primer contacto o importa desde un archivo vCard",
     "empty_search_hint": "Prueba con otro término de búsqueda",
     "clear_search": "Borrar búsqueda",
-    "import_vcard": "Importar vCard"
+    "import_vcard": "Importar vCard",
+    "delete_confirm_title": "¿Eliminar contacto?"
   },
   "calendar": {
     "title": "Calendario",

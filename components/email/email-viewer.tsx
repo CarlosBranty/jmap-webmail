@@ -228,6 +228,75 @@ export function EmailViewer({
     }
   );
 
+  // Wire the print overlay at the document level so Ctrl+P / Cmd+P /
+  // browser menu triggers go through the same cloning path as the
+  // in-app Print button. beforeprint fires right before the dialog
+  // opens, afterprint fires whether the user prints or cancels.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleBeforePrint = () => {
+      if (document.getElementById("print-overlay")) return;
+      const source = document.getElementById("email-viewer-container");
+      if (!source) return;
+
+      const clone = source.cloneNode(true) as HTMLElement;
+
+      // Sandboxed email HTML renders inside an <iframe srcDoc=...>. Cloning
+      // the iframe creates a fresh browsing context that would reload
+      // srcDoc asynchronously, after beforeprint has already completed and
+      // the browser has taken its DOM snapshot for printing — the printed
+      // page ends up with an empty iframe. Move the already-rendered nodes
+      // from the live iframe's body into a plain div on the clone so the
+      // print snapshot sees fully-rendered content.
+      const liveFrames = source.querySelectorAll<HTMLIFrameElement>("iframe");
+      const cloneFrames = clone.querySelectorAll<HTMLIFrameElement>("iframe");
+      liveFrames.forEach((live, i) => {
+        const cloned = cloneFrames[i];
+        if (!cloned) return;
+        const doc = live.contentDocument;
+        if (!doc?.body) return;
+        const replacement = document.createElement("div");
+        replacement.className = "email-content print-inlined-iframe";
+        // cloneNode on each child node avoids a string round-trip so the
+        // sanitized content stays sanitized — no innerHTML on the overlay.
+        doc.body.childNodes.forEach((n) => {
+          replacement.appendChild(n.cloneNode(true));
+        });
+        // Copy the iframe body's computed font so the inlined content
+        // looks the same in print as it did on screen.
+        const bodyStyle = doc.defaultView?.getComputedStyle(doc.body);
+        if (bodyStyle) {
+          replacement.style.fontFamily = bodyStyle.fontFamily;
+          replacement.style.fontSize = bodyStyle.fontSize;
+          replacement.style.lineHeight = bodyStyle.lineHeight;
+          replacement.style.overflowWrap = "break-word";
+        }
+        cloned.replaceWith(replacement);
+      });
+
+      const overlay = document.createElement("div");
+      overlay.id = "print-overlay";
+      overlay.setAttribute("aria-hidden", "true");
+      overlay.appendChild(clone);
+      document.body.appendChild(overlay);
+      document.documentElement.classList.add("is-printing");
+    };
+
+    const handleAfterPrint = () => {
+      document.getElementById("print-overlay")?.remove();
+      document.documentElement.classList.remove("is-printing");
+    };
+
+    window.addEventListener("beforeprint", handleBeforePrint);
+    window.addEventListener("afterprint", handleAfterPrint);
+    return () => {
+      window.removeEventListener("beforeprint", handleBeforePrint);
+      window.removeEventListener("afterprint", handleAfterPrint);
+      handleAfterPrint();
+    };
+  }, []);
+
   const [cidUrls, setCidUrls] = useState<Map<string, string>>(new Map());
   useEffect(() => {
     if (!email?.attachments || !client) {
@@ -680,6 +749,7 @@ export function EmailViewer({
   return (
     <div
       key={email.id}
+      id="email-viewer-container"
       className={cn("flex-1 flex flex-col h-full bg-background overflow-hidden animate-in fade-in duration-300 relative", className)}
     >
       {/* Loading overlay when fetching new email */}
@@ -704,7 +774,7 @@ export function EmailViewer({
                 variant="ghost"
                 size="icon"
                 onClick={onBack}
-                className="h-11 w-11 lg:h-10 lg:w-10 flex-shrink-0 -ml-2"
+                className="h-11 w-11 lg:h-10 lg:w-10 flex-shrink-0 -ml-2 print:hidden"
                 aria-label={t('back_to_list')}
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -741,7 +811,7 @@ export function EmailViewer({
             </div>
 
             {/* Quick Actions */}
-            <div className="flex items-center gap-0.5 flex-shrink-0">
+            <div className="flex items-center gap-0.5 flex-shrink-0 print:hidden">
               {/* Loading indicator */}
               {isLoading && (
                 <div className="mr-2 flex items-center gap-1.5 text-muted-foreground hidden lg:flex">
@@ -905,7 +975,7 @@ export function EmailViewer({
               </div>
 
               {/* More Actions Dropdown */}
-              <div className="relative">
+              <div className="relative print:hidden">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -927,7 +997,13 @@ export function EmailViewer({
                     {t('view_source')}
                   </button>
                   <button
-                    onClick={() => { window.print(); setShowMoreActions(false); }}
+                    onClick={() => {
+                      setShowMoreActions(false);
+                      // The overlay is created by the beforeprint listener
+                      // above, which also handles Ctrl+P and browser menu
+                      // Print triggers.
+                      window.print();
+                    }}
                     className="w-full px-3 py-2 text-sm text-left hover:bg-muted text-foreground flex items-center gap-2"
                   >
                     <Printer className="w-4 h-4" />
@@ -1361,7 +1437,7 @@ export function EmailViewer({
       </div>
 
       {/* Email Content Area */}
-      <div className="flex-1 overflow-auto bg-muted/30">
+      <div id="email-content-area" className="flex-1 overflow-auto bg-muted/30">
         {/* Mobile/Tablet Sender Info - scrolls with content */}
         <div className="lg:hidden bg-background border-b border-border px-4 py-3">
           <div className="flex items-start gap-3">
@@ -1610,7 +1686,7 @@ export function EmailViewer({
 
           {/* Quick Reply Section */}
           <div className={cn(
-            "mt-6 bg-background rounded-lg shadow-sm border transition-all",
+            "print:hidden mt-6 bg-background rounded-lg shadow-sm border transition-all",
             isQuickReplyFocused || quickReplyText ? "border-primary" : "border-border"
           )}>
             <div className="p-4">

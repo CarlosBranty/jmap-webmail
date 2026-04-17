@@ -40,7 +40,8 @@
       "missing_params": "Fehlende Autorisierungsdaten. Bitte erneut anmelden.",
       "token_exchange_failed": "Authentifizierung konnte nicht abgeschlossen werden. Bitte erneut versuchen.",
       "access_denied": "Zugriff verweigert. Bitte kontaktieren Sie Ihren Administrator.",
-      "back_to_login": "Zurück zur Anmeldung"
+      "back_to_login": "Zurück zur Anmeldung",
+      "requires_https": "Single Sign-On erfordert eine sichere Verbindung. Bitte greifen Sie über HTTPS auf dieses Webmail zu (oder localhost in der Entwicklung)."
     }
   },
   "sidebar": {
@@ -515,6 +516,8 @@
     "german": "Deutsch",
     "dutch": "Nederlands",
     "portuguese": "Português",
+    "russian": "Русский",
+    "ukrainian": "Українська",
     "select_language": "Sprache auswählen",
     "switch_to_english": "Zu Englisch wechseln",
     "switch_to_french": "Zu Französisch wechseln",
@@ -524,6 +527,8 @@
     "switch_to_german": "Zu Deutsch wechseln",
     "switch_to_dutch": "Zu Niederländisch wechseln",
     "switch_to_portuguese": "Zu Portugiesisch wechseln",
+    "switch_to_russian": "Zu Russisch wechseln",
+    "switch_to_ukrainian": "Zu Ukrainisch wechseln",
     "switching": "Sprache wird gewechselt..."
   },
   "settings": {
@@ -663,6 +668,10 @@
         "close": "Schließen",
         "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
         "already_added": "Dieser Absender ist bereits vertrauenswürdig"
+      },
+      "domain_favicon_avatars": {
+        "label": "Domain-Avatare",
+        "description": "Wenn ein Kontakt kein Bild hat, wird das Favicon der Absenderdomain anstelle der Initialen angezeigt. Wird von einem öffentlichen Favicon-Dienst nur anhand des Domain-Namens bezogen (keine E-Mail-Adresse, kein Hashing). Standardmäßig deaktiviert."
       }
     },
     "composer": {
@@ -1202,7 +1211,8 @@
       "name_required": "Mindestens ein Vor- oder Nachname ist erforderlich",
       "email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
       "save_failed": "Kontakt konnte nicht gespeichert werden",
-      "email_error_inline": "Ungültiges E-Mail-Format"
+      "email_error_inline": "Ungültiges E-Mail-Format",
+      "delete": "Löschen"
     },
     "groups": {
       "create": "Neue Gruppe",
@@ -1266,7 +1276,8 @@
     "empty_state_subtitle": "Erstellen Sie Ihren ersten Kontakt oder importieren Sie aus einer vCard-Datei",
     "empty_search_hint": "Versuchen Sie einen anderen Suchbegriff",
     "clear_search": "Suche löschen",
-    "import_vcard": "vCard importieren"
+    "import_vcard": "vCard importieren",
+    "delete_confirm_title": "Kontakt löschen?"
   },
   "calendar": {
     "title": "Kalender",

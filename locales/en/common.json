@@ -40,7 +40,8 @@
       "missing_params": "Missing authorization data. Please try signing in again.",
       "token_exchange_failed": "Failed to complete authentication. Please try again.",
       "access_denied": "Access was denied. Please contact your administrator.",
-      "back_to_login": "Back to login"
+      "back_to_login": "Back to login",
+      "requires_https": "Single Sign-On requires a secure connection. Please access this webmail over HTTPS (or localhost during development)."
     }
   },
   "sidebar": {
@@ -519,6 +520,8 @@
     "german": "Deutsch",
     "dutch": "Nederlands",
     "portuguese": "Português",
+    "russian": "Русский",
+    "ukrainian": "Українська",
     "select_language": "Select language",
     "switch_to_english": "Switch to English",
     "switch_to_french": "Switch to French",
@@ -528,6 +531,8 @@
     "switch_to_german": "Switch to German",
     "switch_to_dutch": "Switch to Dutch",
     "switch_to_portuguese": "Switch to Portuguese",
+    "switch_to_russian": "Switch to Russian",
+    "switch_to_ukrainian": "Switch to Ukrainian",
     "switching": "Changing language..."
   },
   "settings": {
@@ -671,6 +676,10 @@
         "close": "Close",
         "invalid_email": "Please enter a valid email address",
         "already_added": "This sender is already trusted"
+      },
+      "domain_favicon_avatars": {
+        "label": "Domain avatars",
+        "description": "When a contact has no picture, show the sender domain's favicon instead of initials. Fetched from a public favicon service using only the domain name (no email address, no hashing). Off by default."
       }
     },
     "composer": {
@@ -1211,7 +1220,8 @@
       "name_required": "At least a first name or last name is required",
       "email_invalid": "Please enter a valid email address",
       "email_error_inline": "Invalid email format",
-      "save_failed": "Failed to save contact"
+      "save_failed": "Failed to save contact",
+      "delete": "Delete"
     },
     "groups": {
       "create": "New Group",
@@ -1270,7 +1280,8 @@
       "error_create": "Failed to create contact",
       "error_update": "Failed to update contact",
       "error_delete": "Failed to delete contact"
-    }
+    },
+    "delete_confirm_title": "Delete contact?"
   },
   "calendar": {
     "title": "Calendar",

@@ -40,7 +40,8 @@
       "missing_params": "Dati di autorizzazione mancanti. Prova ad accedere di nuovo.",
       "token_exchange_failed": "Impossibile completare l'autenticazione. Riprova.",
       "access_denied": "Accesso negato. Contatta il tuo amministratore.",
-      "back_to_login": "Torna al login"
+      "back_to_login": "Torna al login",
+      "requires_https": "Il Single Sign-On richiede una connessione sicura. Accedi a questa webmail tramite HTTPS (o localhost in sviluppo)."
     }
   },
   "sidebar": {
@@ -515,6 +516,8 @@
     "german": "Deutsch",
     "dutch": "Nederlands",
     "portuguese": "Português",
+    "russian": "Русский",
+    "ukrainian": "Українська",
     "select_language": "Seleziona lingua",
     "switch_to_english": "Passa all'inglese",
     "switch_to_french": "Passa al francese",
@@ -524,6 +527,8 @@
     "switch_to_german": "Passa al tedesco",
     "switch_to_dutch": "Passa all'olandese",
     "switch_to_portuguese": "Passa al portoghese",
+    "switch_to_russian": "Passa al russo",
+    "switch_to_ukrainian": "Passa all'ucraino",
     "switching": "Cambio lingua in corso..."
   },
   "settings": {
@@ -663,6 +668,10 @@
         "close": "Chiudi",
         "invalid_email": "Inserisci un indirizzo email valido",
         "already_added": "Questo mittente è già attendibile"
+      },
+      "domain_favicon_avatars": {
+        "label": "Avatar per dominio",
+        "description": "Quando un contatto non ha una foto, viene mostrato il favicon del dominio del mittente invece delle iniziali. Recuperato da un servizio pubblico di favicon usando solo il nome di dominio (nessun indirizzo email, nessun hash). Disattivato per impostazione predefinita."
       }
     },
     "composer": {
@@ -1202,7 +1211,8 @@
       "name_required": "È richiesto almeno un nome o cognome",
       "email_invalid": "Inserisci un indirizzo email valido",
       "save_failed": "Impossibile salvare il contatto",
-      "email_error_inline": "Formato email non valido"
+      "email_error_inline": "Formato email non valido",
+      "delete": "Elimina"
     },
     "groups": {
       "create": "Nuovo gruppo",
@@ -1266,7 +1276,8 @@
     "empty_state_subtitle": "Crea il tuo primo contatto o importa da un file vCard",
     "empty_search_hint": "Prova con un altro termine di ricerca",
     "clear_search": "Cancella ricerca",
-    "import_vcard": "Importa vCard"
+    "import_vcard": "Importa vCard",
+    "delete_confirm_title": "Eliminare il contatto?"
   },
   "calendar": {
     "title": "Calendario",

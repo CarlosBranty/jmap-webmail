@@ -260,20 +260,23 @@ This document tracks the development status and planned features for JMAP Webmai
 - [x] GitHub Actions CI/CD for automated image publishing on releases
 - [x] CVE remediation: remove npm from production image, upgrade Alpine packages
 - [x] Server-side update check (logs newer version availability on startup)
+- [x] Docker major version tag (`jmap-webmail:1`) for deployments pinning to major
+
+### Release 1.5.0 (2026-04-17)
+- [x] Archive action applies to the entire conversation thread (#49)
+- [x] Optional domain-favicon avatars with privacy-preserving proxy (#22)
+- [x] Nested folder names resolved correctly in Sieve filter generator (#62)
+- [x] Russian and Ukrainian locales (1210 keys each, 10 locales total)
+- [x] Contact list batched to respect server `maxObjectsInGet` (#45)
+- [x] Favicon unread badge with live mailbox count refresh
+- [x] Plain text and HTML email printing (single-page, light-mode output, fits A4)
+- [x] OIDC surfaces a clear HTTPS-required message on plain HTTP (#23)
 
 ## Planned Features
 
-### Next release (1.5.0) — community PRs and targeted fixes
-- [ ] Archive action applies to whole thread, not single message (#49)
-- [ ] Domain-favicon avatars when contact photo unset (privacy-preserving, #22)
-- [ ] Nested folder names resolved correctly in Sieve filter generator (#62)
+### Still open for a future release
 - [ ] Attachments rendered for mail originating from third-party providers (#58)
-- [ ] Russian and Ukrainian locales
-- [ ] Contact list batched to respect server `maxObjectsInGet` (#45)
-- [ ] Favicon unread badge with live mailbox count refresh
-- [ ] Print layout excludes sidebar and message list
-- [ ] Docker major version tag (`jmap-webmail:1`)
-- [ ] OIDC HTTPS requirement documented
+- [ ] Email-to-self not rejected as duplicate (#60)
 
 ### Real-time and PWA (1.6.0)
 - [ ] JMAP WebSocket push transport (RFC 8887), replacing polling fallback

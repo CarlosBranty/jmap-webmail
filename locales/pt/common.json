@@ -40,7 +40,8 @@
       "missing_params": "Dados de autorização ausentes. Tente entrar novamente.",
       "token_exchange_failed": "Não foi possível concluir a autenticação. Tente novamente.",
       "access_denied": "Acesso negado. Entre em contato com seu administrador.",
-      "back_to_login": "Voltar ao login"
+      "back_to_login": "Voltar ao login",
+      "requires_https": "O Single Sign-On requer uma ligação segura. Aceda a este webmail através de HTTPS (ou localhost em desenvolvimento)."
     }
   },
   "sidebar": {
@@ -515,6 +516,8 @@
     "german": "Deutsch",
     "dutch": "Nederlands",
     "portuguese": "Português",
+    "russian": "Русский",
+    "ukrainian": "Українська",
     "select_language": "Selecionar idioma",
     "switch_to_english": "Mudar para Inglês",
     "switch_to_french": "Mudar para Francês",
@@ -524,6 +527,8 @@
     "switch_to_german": "Mudar para Alemão",
     "switch_to_dutch": "Mudar para Holandês",
     "switch_to_portuguese": "Mudar para Português",
+    "switch_to_russian": "Mudar para Russo",
+    "switch_to_ukrainian": "Mudar para Ucraniano",
     "switching": "Alterando idioma..."
   },
   "settings": {
@@ -663,6 +668,10 @@
         "close": "Fechar",
         "invalid_email": "Por favor, digite um endereço de e-mail válido",
         "already_added": "Este remetente já é confiável"
+      },
+      "domain_favicon_avatars": {
+        "label": "Avatares por domínio",
+        "description": "Quando um contacto não tem fotografia, o favicon do domínio do remetente é apresentado em vez das iniciais. Obtido de um serviço público de favicons usando apenas o nome de domínio (sem endereço de e-mail nem hash). Desativado por omissão."
       }
     },
     "composer": {
@@ -1202,7 +1211,8 @@
       "name_required": "É necessário pelo menos um nome ou sobrenome",
       "email_invalid": "Por favor, insira um endereço de e-mail válido",
       "save_failed": "Falha ao salvar contato",
-      "email_error_inline": "Formato de e-mail inválido"
+      "email_error_inline": "Formato de e-mail inválido",
+      "delete": "Eliminar"
     },
     "groups": {
       "create": "Novo grupo",
@@ -1266,7 +1276,8 @@
     "empty_state_subtitle": "Crie seu primeiro contato ou importe de um arquivo vCard",
     "empty_search_hint": "Tente outro termo de pesquisa",
     "clear_search": "Limpar pesquisa",
-    "import_vcard": "Importar vCard"
+    "import_vcard": "Importar vCard",
+    "delete_confirm_title": "Eliminar contacto?"
   },
   "calendar": {
     "title": "Calendário",

@@ -1,5 +1,84 @@
 # Changelog
 
+## 1.5.0 (2026-04-17)
+
+### Features
+
+- **Archive applies to the whole thread**: archiving from a threaded
+  conversation now moves every message in the thread to Archive in a
+  single `Email/set`, matching Gmail / Apple Mail behaviour. Closes #49.
+  Thanks @capitanroy for the issue and the implementation suggestion.
+- **Russian and Ukrainian locales**: `ru` and `uk` are now available in
+  the language switcher, each with a full translation set (1210 keys)
+  and proper Slavic plural forms. Thanks @VsevolodSauta (#59).
+- **Custom favicon with unread badge**: the tab icon is now a mail SVG,
+  and a red badge with the inbox unread count is painted on top (a `+`
+  when there are more than nine unread). Also fixes a latent bug where
+  the sidebar unread counter could go stale after a JMAP push. Thanks
+  @jabiinfante (#63).
+- **Optional domain-favicon avatars**: when a contact has no photo,
+  Settings → Email → "Domain avatars" replaces the initials avatar with
+  the favicon of the sender's domain. The lookup goes through a local
+  `/api/favicon` proxy and only the domain name is ever sent out — no
+  email address, no hashing. Freemail providers (gmail, outlook, yahoo,
+  icloud, proton, gmx and others) keep initials so the same logo isn't
+  shown for every sender on a shared host. Off by default. Closes #22.
+
+### Fixes
+
+- **Plain-text email printing**: the Print action (button, Ctrl+P, menu)
+  now prints only the email content on a clean white page — reply /
+  archive / delete buttons, quick reply and sidebar are all hidden.
+  Dark-mode themes are neutralised so text stays black on white even
+  when the browser's "Print background graphics" toggle is off.
+- **HTML email printing**: messages rendered in the sandboxed iframe
+  now print correctly. The print pipeline inlines the iframe body into
+  the print overlay so the browser doesn't see an empty frame. Wide
+  newsletters shrink to the page width instead of being clipped on the
+  right edge.
+- **Contacts load past 500 entries**: `ContactCard/get` is now batched
+  to respect the server's `maxObjectsInGet` (Stalwart default is 500),
+  so address books with more than 500 contacts no longer silently load
+  as empty. Closes #45. Thanks @capitanroy (#46).
+- **Sieve filter destinations preserve the folder hierarchy**:
+  selecting a nested folder as a filter destination now writes the full
+  `Parent/Child` path to the generated script instead of just the leaf
+  name, so the server can resolve it. Closes #62. Thanks @travier for
+  the report.
+- **OIDC error over plain HTTP is readable**: Sign in with SSO now
+  surfaces a clear "requires a secure connection" banner instead of
+  throwing `crypto.subtle is undefined`. Closes #23. Thanks @jothoma1
+  for the report.
+- **Print layout excludes the sidebar and email list**: the printed
+  page shows only the email viewer, not the full application chrome.
+  Thanks @prastowoagungwidodo (#55).
+- **Contact empty-state buttons**: the "New Contact" / "Import vCard"
+  action row no longer overflows in the contact panel's empty state.
+  Thanks @prastowoagungwidodo (#56).
+- **Contact delete dialog renders in every locale**: added the missing
+  `delete_confirm_title` and `form.delete` keys across all nine non-
+  Dutch locales. Previously hitting Delete in English threw a
+  `MISSING_MESSAGE` error.
+- **Favicon badge hook no longer crashes React**: the hook now owns a
+  single `data-dynamic-favicon` link and leaves Next.js's icon link
+  alone, fixing a `parentNode is null` crash on route changes.
+- **Avatar fallback when a domain has no favicon**: the `/api/favicon`
+  proxy returns a real `404` for domains DuckDuckGo can't resolve, so
+  the `<img>` error event fires and the avatar falls back to the
+  initials rather than showing a generic placeholder icon.
+
+### Documentation
+
+- **README**: added an example for `OAUTH_ONLY=true` to disable Basic
+  Auth when running in SSO-only mode. Thanks @travier (#61).
+
+### Infrastructure
+
+- **Docker major version tag**: container images are now also published
+  under `jmap-webmail:1`, so deployments can pin to the current major
+  and receive non-breaking minor / patch updates automatically. Thanks
+  @joelpurra (#57, closes #54).
+
 ## 1.4.1 (2026-04-16)
 
 ### Security

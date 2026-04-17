@@ -40,7 +40,8 @@
       "missing_params": "認証データが不足しています。再度サインインしてください。",
       "token_exchange_failed": "認証を完了できませんでした。再度お試しください。",
       "access_denied": "アクセスが拒否されました。管理者にお問い合わせください。",
-      "back_to_login": "ログインに戻る"
+      "back_to_login": "ログインに戻る",
+      "requires_https": "シングルサインオンには安全な接続が必要です。HTTPS（または開発時は localhost）でこのウェブメールにアクセスしてください。"
     }
   },
   "sidebar": {
@@ -515,6 +516,8 @@
     "german": "Deutsch",
     "dutch": "Nederlands",
     "portuguese": "Português",
+    "russian": "Русский",
+    "ukrainian": "Українська",
     "select_language": "言語を選択",
     "switch_to_english": "英語に切り替え",
     "switch_to_french": "フランス語に切り替え",
@@ -524,6 +527,8 @@
     "switch_to_german": "ドイツ語に切り替え",
     "switch_to_dutch": "オランダ語に切り替え",
     "switch_to_portuguese": "ポルトガル語に切り替え",
+    "switch_to_russian": "ロシア語に切り替え",
+    "switch_to_ukrainian": "ウクライナ語に切り替え",
     "switching": "言語を変更中..."
   },
   "settings": {
@@ -663,6 +668,10 @@
         "close": "閉じる",
         "invalid_email": "有効なメールアドレスを入力してください",
         "already_added": "この送信者はすでに信頼されています"
+      },
+      "domain_favicon_avatars": {
+        "label": "ドメインアバター",
+        "description": "連絡先に写真がない場合、イニシャルの代わりに送信者ドメインのファビコンを表示します。公開ファビコンサービスからドメイン名のみを使って取得します（メールアドレスやハッシュは送信しません）。既定では無効です。"
       }
     },
     "composer": {
@@ -1202,7 +1211,8 @@
       "name_required": "名前は必須です",
       "email_invalid": "有効なメールアドレスを入力してください",
       "save_failed": "連絡先の保存に失敗しました",
-      "email_error_inline": "メールアドレスの形式が正しくありません"
+      "email_error_inline": "メールアドレスの形式が正しくありません",
+      "delete": "削除"
     },
     "groups": {
       "create": "新しいグループ",
@@ -1266,7 +1276,8 @@
     "empty_state_subtitle": "最初の連絡先を作成するか、vCardファイルからインポートしてください",
     "empty_search_hint": "別の検索語をお試しください",
     "clear_search": "検索をクリア",
-    "import_vcard": "vCardをインポート"
+    "import_vcard": "vCardをインポート",
+    "delete_confirm_title": "連絡先を削除しますか?"
   },
   "calendar": {
     "title": "カレンダー",
