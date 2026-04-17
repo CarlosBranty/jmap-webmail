@@ -272,11 +272,11 @@ This document tracks the development status and planned features for JMAP Webmai
 - [x] Plain text and HTML email printing (single-page, light-mode output, fits A4)
 - [x] OIDC surfaces a clear HTTPS-required message on plain HTTP (#23)
 
-## Planned Features
+### Release 1.5.1 (2026-04-17)
+- [x] Attachments render for mail originating from providers that stamp a Content-ID on every part (#58)
+- [x] Email-to-self delivered instead of being dropped by the MTA's duplicate-message check (#60)
 
-### Still open for a future release
-- [ ] Attachments rendered for mail originating from third-party providers (#58)
-- [ ] Email-to-self not rejected as duplicate (#60)
+## Planned Features
 
 ### Real-time and PWA (1.6.0)
 - [ ] JMAP WebSocket push transport (RFC 8887), replacing polling fallback

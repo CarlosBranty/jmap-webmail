@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.5.1 (2026-04-17)
+
+### Fixes
+
+- **Attachments from Gmail-origin mail now render**: Gmail stamps a
+  `Content-ID` on every attachment it sends, even when the HTML body
+  never references it inline. The viewer treated any cid-bearing part
+  as an inline image and hid it from the attachment panel, so the
+  paperclip indicator showed but no downloadable block did. The viewer
+  now marks an attachment as inline only when its cid is actually
+  cited as `cid:...` in the HTML body — everything else renders as a
+  regular attachment. Applied to both the single-email viewer and the
+  threaded conversation view. Closes #58. Thanks @melges-morgen for
+  the repro.
+- **Email-to-self no longer discarded as duplicate**: the sending
+  account's own MTA was dropping inbound delivery for self-send
+  because the client created the outgoing copy in Sent before
+  submission, so the Message-ID was already known locally when SMTP
+  tried to deliver the same message back. The send flow now keeps the
+  message in Drafts during submission and uses
+  `EmailSubmission.onSuccessUpdateEmail` to move it to Sent only
+  after SMTP has accepted the outbound copy. Closes #60. Thanks
+  @tamisoft for the report.
+
 ## 1.5.0 (2026-04-17)
 
 ### Features
